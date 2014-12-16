@@ -32,7 +32,7 @@ import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.data.pushsensor.PhoneStateData;
+import com.ubhave.sensormanager.data.push.PhoneStateData;
 import com.ubhave.sensormanager.process.push.PhoneStateProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -47,7 +47,7 @@ public class PhoneStateSensor extends AbstractPushSensor
 	private static PhoneStateSensor phoneStateSensor;
 	private static Object lock = new Object();
 
-	public static PhoneStateSensor getPhoneStateSensor(final Context context) throws ESException
+	public static PhoneStateSensor getSensor(final Context context) throws ESException
 	{
 		if (phoneStateSensor == null)
 		{

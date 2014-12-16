@@ -3,6 +3,10 @@ package com.ubhave.sensormanager.process;
 import android.content.Context;
 
 import com.ubhave.sensormanager.ESException;
+import com.ubhave.sensormanager.process.env.AmbientTemperatureProcessor;
+import com.ubhave.sensormanager.process.env.HumidityProcessor;
+import com.ubhave.sensormanager.process.env.LightProcessor;
+import com.ubhave.sensormanager.process.env.PressureProcessor;
 import com.ubhave.sensormanager.process.pull.AccelerometerProcessor;
 import com.ubhave.sensormanager.process.pull.ApplicationProcessor;
 import com.ubhave.sensormanager.process.pull.BluetoothProcessor;
@@ -10,12 +14,15 @@ import com.ubhave.sensormanager.process.pull.CallContentReaderProcessor;
 import com.ubhave.sensormanager.process.pull.CameraProcessor;
 import com.ubhave.sensormanager.process.pull.GyroscopeProcessor;
 import com.ubhave.sensormanager.process.pull.LocationProcessor;
+import com.ubhave.sensormanager.process.pull.MagneticFieldProcessor;
 import com.ubhave.sensormanager.process.pull.MicrophoneProcessor;
+import com.ubhave.sensormanager.process.pull.PhoneRadioProcessor;
 import com.ubhave.sensormanager.process.pull.SMSContentReaderProcessor;
 import com.ubhave.sensormanager.process.pull.WifiProcessor;
 import com.ubhave.sensormanager.process.push.BatteryProcessor;
 import com.ubhave.sensormanager.process.push.ConnectionStateProcessor;
-import com.ubhave.sensormanager.process.push.LightProcessor;
+import com.ubhave.sensormanager.process.push.ConnectionStrengthProcessor;
+import com.ubhave.sensormanager.process.push.PassiveLocationProcessor;
 import com.ubhave.sensormanager.process.push.PhoneStateProcessor;
 import com.ubhave.sensormanager.process.push.ProximityProcessor;
 import com.ubhave.sensormanager.process.push.SMSProcessor;
@@ -30,7 +37,7 @@ public abstract class AbstractProcessor
 		{
 			throw new ESException(ESException.INVALID_STATE, "No data (raw/processed) requested from the processor");
 		}
-		
+
 		switch (sensorType)
 		{
 		case SensorUtils.SENSOR_TYPE_ACCELEROMETER:
@@ -63,23 +70,36 @@ public abstract class AbstractProcessor
 			return new SMSContentReaderProcessor(c, setRawData, setProcessedData);
 		case SensorUtils.SENSOR_TYPE_CAMERA:
 			return new CameraProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_PHONE_RADIO:
+			return new PhoneRadioProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_CONNECTION_STRENGTH:
+			return new ConnectionStrengthProcessor(c, setRawData, setProcessedData);
 		case SensorUtils.SENSOR_TYPE_GYROSCOPE:
-            return new GyroscopeProcessor(c, setRawData, setProcessedData);
+			return new GyroscopeProcessor(c, setRawData, setProcessedData);
 		case SensorUtils.SENSOR_TYPE_LIGHT:
 			return new LightProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_AMBIENT_TEMPERATURE:
+			return new AmbientTemperatureProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_HUMIDITY:
+			return new HumidityProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_PRESSURE:
+			return new PressureProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_PASSIVE_LOCATION:
+			return new PassiveLocationProcessor(c, setRawData, setProcessedData);
+		case SensorUtils.SENSOR_TYPE_MAGNETIC_FIELD:
+			return new MagneticFieldProcessor(c, setRawData, setProcessedData);
 		default:
-			throw new ESException(ESException.UNKNOWN_SENSOR_TYPE, "No processor defined for this sensor.");
+			throw new ESException(ESException.UNKNOWN_SENSOR_TYPE, "No processor defined for this sensor id ("+sensorType+").");
 		}
 	}
-	
+
 	protected final boolean setRawData, setProcessedData;
 	protected final Context appContext;
-	
+
 	public AbstractProcessor(final Context context, final boolean rw, final boolean sp)
 	{
 		this.appContext = context;
 		this.setRawData = rw;
 		this.setProcessedData = sp;
 	}
-	
 }

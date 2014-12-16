@@ -27,7 +27,7 @@ import android.util.Log;
 
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.config.GlobalConfig;
-import com.ubhave.sensormanager.config.sensors.pull.PullSensorConfig;
+import com.ubhave.sensormanager.config.pull.PullSensorConfig;
 import com.ubhave.sensormanager.data.SensorData;
 import com.ubhave.sensormanager.dutycyling.SleepWindowListener;
 import com.ubhave.sensormanager.sensors.AbstractSensor;
@@ -38,7 +38,7 @@ public abstract class AbstractPullSensor extends AbstractSensor implements PullS
 
 	protected SensorData prevSensorData;
 
-	public AbstractPullSensor(Context context)
+	protected AbstractPullSensor(Context context)
 	{
 		super(context);
 	}

@@ -30,9 +30,9 @@ import android.content.Context;
 import android.media.MediaRecorder;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.config.sensors.pull.MicrophoneConfig;
+import com.ubhave.sensormanager.config.pull.MicrophoneConfig;
 import com.ubhave.sensormanager.data.SensorData;
-import com.ubhave.sensormanager.data.pullsensor.MicrophoneData;
+import com.ubhave.sensormanager.data.pull.MicrophoneData;
 import com.ubhave.sensormanager.process.pull.MicrophoneProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -52,7 +52,7 @@ public class MicrophoneSensor extends AbstractMediaSensor
 	private MicrophoneData micData;
 	private boolean isRecording;
 
-	public static MicrophoneSensor getMicrophoneSensor(Context context) throws ESException
+	public static MicrophoneSensor getSensor(Context context) throws ESException
 	{
 		if (microphoneSensor == null)
 		{

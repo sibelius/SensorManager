@@ -5,26 +5,25 @@ import java.util.ArrayList;
 import android.content.Context;
 
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.data.pullsensor.AccelerometerData;
-import com.ubhave.sensormanager.process.AbstractProcessor;
+import com.ubhave.sensormanager.data.pull.AbstractMotionData;
+import com.ubhave.sensormanager.data.pull.AccelerometerData;
 
-public class AccelerometerProcessor extends AbstractProcessor
+public class AccelerometerProcessor extends AbstractMotionProcessor
 {
 	public AccelerometerProcessor(final Context c, boolean rw, boolean sp)
 	{
 		super(c, rw, sp);
 	}
 
-	public AccelerometerData process(long pullSenseStartTimestamp, ArrayList<float[]> sensorReadings,
-			ArrayList<Long> sensorReadingTimestamps, SensorConfig sensorConfig)
+	@Override
+	protected AbstractMotionData getInstance(long pullSenseStartTimestamp, SensorConfig sensorConfig)
 	{
-		AccelerometerData accelerometerData = new AccelerometerData(pullSenseStartTimestamp, sensorConfig);
-		if (setRawData)
-		{
-			accelerometerData.setSensorReadings(sensorReadings);
-			accelerometerData.setSensorReadingTimestamps(sensorReadingTimestamps);
-		}
-		return accelerometerData;
+		return new AccelerometerData(pullSenseStartTimestamp, sensorConfig);
 	}
 
+	@Override
+	protected void processData(ArrayList<float[]> sensorReadings, ArrayList<Long> sensorReadingTimestamps, AbstractMotionData data)
+	{
+		// Future: feature extraction
+	}
 }

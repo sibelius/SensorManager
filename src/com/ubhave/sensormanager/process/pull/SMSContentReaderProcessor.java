@@ -6,11 +6,11 @@ import java.util.Iterator;
 import android.content.Context;
 
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.config.sensors.pull.ContentReaderConfig;
-import com.ubhave.sensormanager.data.pullsensor.AbstractContentReaderEntry;
-import com.ubhave.sensormanager.data.pullsensor.AbstractContentReaderListData;
-import com.ubhave.sensormanager.data.pullsensor.SMSContentListData;
-import com.ubhave.sensormanager.data.pullsensor.SMSContentReaderEntry;
+import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
+import com.ubhave.sensormanager.data.pull.AbstractContentReaderEntry;
+import com.ubhave.sensormanager.data.pull.AbstractContentReaderListData;
+import com.ubhave.sensormanager.data.pull.SMSContentListData;
+import com.ubhave.sensormanager.data.pull.SMSContentReaderEntry;
 
 public class SMSContentReaderProcessor extends ContentReaderProcessor
 {

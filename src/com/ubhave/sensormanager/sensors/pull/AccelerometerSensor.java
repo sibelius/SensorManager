@@ -25,7 +25,7 @@ package com.ubhave.sensormanager.sensors.pull;
 import android.content.Context;
 import android.hardware.Sensor;
 
-import com.ubhave.sensormanager.data.pullsensor.AccelerometerData;
+import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.process.pull.AccelerometerProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -33,10 +33,8 @@ public class AccelerometerSensor extends AbstractMotionSensor
 {
 	private static final String TAG = "AccelerometerSensor";
 	private static AccelerometerSensor accelerometerSensor;
-	private static Object lock = new Object();
-	private AccelerometerData accelerometerData;
 
-	public static AccelerometerSensor getAccelerometerSensor(Context context)
+	public static AccelerometerSensor getSensor(Context context) throws ESException
 	{
 		if (accelerometerSensor == null)
 		{
@@ -51,7 +49,7 @@ public class AccelerometerSensor extends AbstractMotionSensor
 		return accelerometerSensor;
 	}
 
-	private AccelerometerSensor(final Context context)
+	private AccelerometerSensor(final Context context) throws ESException
 	{
 		super(context, Sensor.TYPE_ACCELEROMETER);
 	}
@@ -66,17 +64,12 @@ public class AccelerometerSensor extends AbstractMotionSensor
 		return SensorUtils.SENSOR_TYPE_ACCELEROMETER;
 	}
 
-	protected AccelerometerData getMostRecentRawData()
-	{
-		return accelerometerData;
-	}
-	
 	protected void processSensorData()
 	{
 		synchronized (sensorReadings)
 		{
-			AccelerometerProcessor processor = (AccelerometerProcessor)getProcessor();
-			accelerometerData = processor.process(pullSenseStartTimestamp, sensorReadings, sensorReadingTimestamps, sensorConfig.clone());
+			AccelerometerProcessor processor = (AccelerometerProcessor) getProcessor();
+			data = processor.process(pullSenseStartTimestamp, sensorReadings, sensorReadingTimestamps, sensorConfig.clone());
 		}
 	}
 }

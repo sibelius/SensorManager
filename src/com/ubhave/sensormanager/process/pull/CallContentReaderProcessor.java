@@ -7,11 +7,11 @@ import android.content.Context;
 import android.provider.CallLog;
 
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.config.sensors.pull.ContentReaderConfig;
-import com.ubhave.sensormanager.data.pullsensor.AbstractContentReaderEntry;
-import com.ubhave.sensormanager.data.pullsensor.AbstractContentReaderListData;
-import com.ubhave.sensormanager.data.pullsensor.CallContentListData;
-import com.ubhave.sensormanager.data.pullsensor.CallContentReaderEntry;
+import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
+import com.ubhave.sensormanager.data.pull.AbstractContentReaderEntry;
+import com.ubhave.sensormanager.data.pull.AbstractContentReaderListData;
+import com.ubhave.sensormanager.data.pull.CallContentListData;
+import com.ubhave.sensormanager.data.pull.CallContentReaderEntry;
 
 public class CallContentReaderProcessor extends ContentReaderProcessor
 {

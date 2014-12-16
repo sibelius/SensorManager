@@ -32,9 +32,9 @@ import android.util.Log;
 
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.config.GlobalConfig;
-import com.ubhave.sensormanager.config.sensors.pull.CameraConfig;
+import com.ubhave.sensormanager.config.pull.CameraConfig;
 import com.ubhave.sensormanager.data.SensorData;
-import com.ubhave.sensormanager.data.pullsensor.CameraData;
+import com.ubhave.sensormanager.data.pull.CameraData;
 import com.ubhave.sensormanager.process.pull.CameraProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -51,7 +51,7 @@ public class CameraSensor extends AbstractMediaSensor
 	private Camera camera;
 	private File imageFile;
 
-	public static CameraSensor getCameraSensor(final Context context) throws ESException
+	public static CameraSensor getSensor(final Context context) throws ESException
 	{
 		if (cameraSensor == null)
 		{

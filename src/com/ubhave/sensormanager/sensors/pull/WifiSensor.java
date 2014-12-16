@@ -34,9 +34,9 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.config.sensors.pull.PullSensorConfig;
-import com.ubhave.sensormanager.data.pullsensor.WifiData;
-import com.ubhave.sensormanager.data.pullsensor.WifiScanResult;
+import com.ubhave.sensormanager.config.pull.PullSensorConfig;
+import com.ubhave.sensormanager.data.pull.WifiData;
+import com.ubhave.sensormanager.data.pull.WifiScanResult;
 import com.ubhave.sensormanager.process.pull.WifiProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -58,7 +58,7 @@ public class WifiSensor extends AbstractPullSensor
 	private int cyclesRemaining;
 	private WifiData wifiData;
 
-	public static WifiSensor getWifiSensor(Context context) throws ESException
+	public static WifiSensor getSensor(final Context context) throws ESException
 	{
 		if (wifiSensor == null)
 		{

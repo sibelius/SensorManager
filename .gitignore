@@ -4,6 +4,9 @@ assets/*
 .idea/*
 .settings/
 libs/
+bin/classes
 SensorManager.iml
 
 *.class
+
+*.cache

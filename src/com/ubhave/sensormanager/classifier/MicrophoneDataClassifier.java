@@ -22,9 +22,9 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 package com.ubhave.sensormanager.classifier;
 
-import com.ubhave.sensormanager.config.sensors.pull.MicrophoneConfig;
+import com.ubhave.sensormanager.config.pull.MicrophoneConfig;
 import com.ubhave.sensormanager.data.SensorData;
-import com.ubhave.sensormanager.data.pullsensor.MicrophoneData;
+import com.ubhave.sensormanager.data.pull.MicrophoneData;
 
 public class MicrophoneDataClassifier implements SensorDataClassifier
 {

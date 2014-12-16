@@ -34,7 +34,7 @@ import android.util.Log;
 
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.config.GlobalConfig;
-import com.ubhave.sensormanager.data.pushsensor.ConnectionStateData;
+import com.ubhave.sensormanager.data.push.ConnectionStateData;
 import com.ubhave.sensormanager.process.push.ConnectionStateProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -46,7 +46,7 @@ public class ConnectionStateSensor extends AbstractPushSensor
 	private static ConnectionStateSensor connectionSensor;
 	private static final Object lock = new Object();
 
-	public static ConnectionStateSensor getConnectionStateSensor(final Context context) throws ESException
+	public static ConnectionStateSensor getSensor(final Context context) throws ESException
 	{
 		if (connectionSensor == null)
 		{

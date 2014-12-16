@@ -35,8 +35,8 @@ import android.os.Handler;
 import android.telephony.SmsMessage;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.config.sensors.pull.ContentReaderConfig;
-import com.ubhave.sensormanager.data.pushsensor.SmsData;
+import com.ubhave.sensormanager.config.pull.ContentReaderConfig;
+import com.ubhave.sensormanager.data.push.SmsData;
 import com.ubhave.sensormanager.process.push.SMSProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -52,7 +52,7 @@ public class SmsSensor extends AbstractPushSensor
 	private ContentObserver observer;
 	private String prevMessageId;
 
-	public static SmsSensor getSmsSensor(final Context context) throws ESException
+	public static SmsSensor getSensor(final Context context) throws ESException
 	{
 		if (smsSensor == null)
 		{

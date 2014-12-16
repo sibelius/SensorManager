@@ -27,7 +27,7 @@ import android.util.Log;
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.config.GlobalConfig;
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.config.sensors.pull.PullSensorConfig;
+import com.ubhave.sensormanager.config.pull.PullSensorConfig;
 import com.ubhave.sensormanager.data.SensorData;
 import com.ubhave.sensormanager.sensors.SensorInterface;
 import com.ubhave.sensormanager.sensors.SensorUtils;
@@ -89,9 +89,9 @@ public class PullSensorTask extends AbstractSensorTask
 						// will have the sampling window, cycle information
 						if (GlobalConfig.shouldLog())
 						{
-							Log.d(getLogTag(), "Pulling from: " + SensorUtils.getSensorName(sensor.getSensorType()));	
+							Log.d(getLogTag(), "Pulling from: " + SensorUtils.getSensorName(sensor.getSensorType()));
 						}
-						
+
 						SensorData sensorData = getCurrentSensorData(false);
 						// publish sensed data
 						publishData(sensorData);

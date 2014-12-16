@@ -28,7 +28,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 
 import com.ubhave.sensormanager.ESException;
-import com.ubhave.sensormanager.data.pushsensor.BatteryData;
+import com.ubhave.sensormanager.data.push.BatteryData;
 import com.ubhave.sensormanager.process.push.BatteryProcessor;
 import com.ubhave.sensormanager.sensors.SensorUtils;
 
@@ -38,7 +38,7 @@ public class BatterySensor extends AbstractPushSensor
 	private static BatterySensor batterySensor;
 	private static Object lock = new Object();
 
-	public static BatterySensor getBatterySensor(final Context context) throws ESException
+	public static BatterySensor getSensor(final Context context) throws ESException
 	{
 		if (batterySensor == null)
 		{

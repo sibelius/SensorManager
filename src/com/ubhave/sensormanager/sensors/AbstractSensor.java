@@ -27,7 +27,7 @@ import android.content.pm.PackageManager;
 
 import com.ubhave.sensormanager.ESException;
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.config.sensors.pull.LocationConfig;
+import com.ubhave.sensormanager.config.pull.LocationConfig;
 import com.ubhave.sensormanager.process.AbstractProcessor;
 
 public abstract class AbstractSensor implements SensorInterface
@@ -37,11 +37,11 @@ public abstract class AbstractSensor implements SensorInterface
 	protected final Object senseCompleteNotify;
 	protected final SensorConfig sensorConfig;
 
-	public AbstractSensor(final Context context)
+	protected AbstractSensor(final Context context)
 	{
 		applicationContext = context;
 		senseCompleteNotify = new Object();
-		sensorConfig = SensorUtils.getDefaultSensorConfig(getSensorType());
+		sensorConfig = SensorConfig.getDefaultConfig(getSensorType());
 	}
 
 	protected static boolean permissionGranted(final Context context, final String permission)

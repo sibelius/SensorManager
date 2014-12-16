@@ -5,25 +5,25 @@ import java.util.ArrayList;
 import android.content.Context;
 
 import com.ubhave.sensormanager.config.SensorConfig;
-import com.ubhave.sensormanager.data.pullsensor.GyroscopeData;
-import com.ubhave.sensormanager.process.AbstractProcessor;
+import com.ubhave.sensormanager.data.pull.AbstractMotionData;
+import com.ubhave.sensormanager.data.pull.GyroscopeData;
 
-public class GyroscopeProcessor extends AbstractProcessor
+public class GyroscopeProcessor extends AbstractMotionProcessor
 {
 	public GyroscopeProcessor(final Context c, boolean rw, boolean sp)
 	{
 		super(c, rw, sp);
 	}
 
-	public GyroscopeData process(long pullSenseStartTimestamp, ArrayList<float[]> sensorReadings,
-			ArrayList<Long> sensorReadingTimestamps, SensorConfig sensorConfig)
+	@Override
+	protected AbstractMotionData getInstance(long pullSenseStartTimestamp, SensorConfig sensorConfig)
 	{
-		GyroscopeData gyroscopeData = new GyroscopeData(pullSenseStartTimestamp, sensorConfig);
-		if (setRawData)
-		{
-            gyroscopeData.setSensorReadings(sensorReadings);
-            gyroscopeData.setSensorReadingTimestamps(sensorReadingTimestamps);
-		}
-        return gyroscopeData;
+		return new GyroscopeData(pullSenseStartTimestamp, sensorConfig);
+	}
+
+	@Override
+	protected void processData(ArrayList<float[]> sensorReadings, ArrayList<Long> sensorReadingTimestamps, AbstractMotionData data)
+	{
+		// Future: feature extraction
 	}
 }
